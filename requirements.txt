@@ -9,3 +9,5 @@ yfinance
 selenium
 bs4
 reliability
+xlrd
+XlsxWriter
