@@ -17,7 +17,7 @@ import streamlit as st
 from PIL import Image
 
 
-im = st.image("./img/mtto2.png")
+im = st.image('./img/mtto2.png')
 
 st.set_page_config(page_title='Confiabilidad', layout="wide", page_icon=im)
 st.set_option('deprecation.showPyplotGlobalUse', False)
