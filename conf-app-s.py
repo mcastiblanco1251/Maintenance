@@ -17,7 +17,7 @@ import streamlit as st
 from PIL import Image
 
 
-im = Image.open("./mtto2.png")
+im = Image.open("./img/mtto2.png")
 
 st.set_page_config(page_title='Confiabilidad', layout="wide", page_icon=im)
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -25,7 +25,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 row1_1, row1_2 = st.columns((2,3))
 
 with row1_1:
-    image = Image.open('./mttoch.jpg')
+    image = Image.open('./img/mttoch.jpg')
     st.image(image, use_column_width=True)
     st.markdown('Web App by [Manuel Castiblanco](http://ia.smartecorganic.com.co/index.php/contact/)')
 with row1_2:
