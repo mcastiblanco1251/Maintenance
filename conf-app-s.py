@@ -244,7 +244,7 @@ else:
 
     for file in files:
         equi=file#'Vitrojet .csv'
-        df=pd.read_excel(file)#, sep=';')#,encoding='latin-1',sep=';')#,encoding='ISO-8859-1')
+        df=pd.read_excel('./Demo/SELLADORA PEQUEÑA.xlsx')#, sep=';')#,encoding='latin-1',sep=';')#,encoding='ISO-8859-1')
         #Falla general equipo
         df=falla_tiempo(df)
 
