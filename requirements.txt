@@ -8,3 +8,4 @@ pandas_datareader
 yfinance 
 selenium
 bs4
+reliability==0.8.1
