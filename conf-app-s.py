@@ -84,6 +84,7 @@ def falla_tiempo(df):
 
 #Necesario2
 def confiabilidad(threshold, data, wb):
+    wb
     data
     time_to_p=max(data)
     time_to_p
