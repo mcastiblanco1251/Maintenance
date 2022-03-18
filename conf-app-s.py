@@ -87,11 +87,11 @@ def confiabilidad(threshold, data, wb):
     data
     time_to_p=max(data)
     time_to_p
-    hours=list(np.array(range(1,time_to_p,10)))
+    hours=(np.array(range(1,time_to_p,10))
     hours
     threshold=threshold
     realiability=[]
-    sf = wb.distribution.SF((hours[0]))
+    sf = wb.distribution.SF(1)
     sf
     for hour in hours :
         hours[0]
