@@ -85,7 +85,7 @@ def falla_tiempo(df):
 #Necesario2
 def confiabilidad(threshold, data, wb):
     time_to_p=max(data)
-    hours=np.array(range(1,time_to_p,10))
+    hours=int(np.array(range(1,time_to_p,10)))
     threshold=threshold
     realiability=[]
     for hour in hours :
