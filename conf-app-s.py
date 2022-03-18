@@ -92,6 +92,7 @@ def confiabilidad(threshold, data, wb):
     threshold=threshold
     realiability=[]
     sf = wb.distribution.SF((hours[0]))
+    sf
     for hour in hours :
         hours[0]
         sf = wb.distribution.SF((hours[0]))
