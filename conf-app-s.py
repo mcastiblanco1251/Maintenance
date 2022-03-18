@@ -225,8 +225,8 @@ else:
     files=path
 
     st.subheader('Archivos a Analizar')
-    f=pd.DataFrame(files, columns=['Equipos'])
-    st.write(f)#=['MASTER 35.csv']
+    #f=pd.DataFrame(files, columns=['Equipos'])
+    st.write(path)#=['MASTER 35.csv']
     # except:
     # pass
 
