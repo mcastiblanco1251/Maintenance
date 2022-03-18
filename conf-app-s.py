@@ -17,7 +17,7 @@ import streamlit as st
 from PIL import Image
 
 
-im = Image.open("./img/mtto2.png")
+im = Image.open("mtto2.png")
 
 st.set_page_config(page_title='Confiabilidad', layout="wide", page_icon=im)
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -25,7 +25,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 row1_1, row1_2 = st.columns((2,3))
 
 with row1_1:
-    image = Image.open('./img/mttoch.jpg')
+    image = Image.open('mttoch.jpg')
     st.image(image, use_column_width=True)
     st.markdown('Web App by [Manuel Castiblanco](http://ia.smartecorganic.com.co/index.php/contact/)')
 with row1_2:
@@ -213,7 +213,7 @@ def files(pa, ext):
 #with st.form(key='Descargar', clear_on_submit=False):
 st.sidebar.subheader('Datos Entrada')
 #try:
-path=st.sidebar.text_input('Dirección')#'Y:/2016 MANTENIMIENTO/confiabilidad/'
+path='SELLADORA PEQUEÑA.xlsx'#st.sidebar.text_input('Dirección')#'Y:/2016 MANTENIMIENTO/confiabilidad/'
 ext=st.sidebar.selectbox('Extensión archivo', ('xlsx','csv'))
 tr=st.sidebar.slider('Confiabilidad',0.0,1.0,0.55)
 if path=='':
@@ -222,7 +222,7 @@ else:
 
     #    submit_button = st.form_submit_button(label='Analizar')
     #    if submit_button:
-    files=files(path,ext)
+    files=path
 
     st.subheader('Archivos a Analizar')
     f=pd.DataFrame(files, columns=['Equipos'])
@@ -244,7 +244,7 @@ else:
 
     for file in files:
         equi=file#'Vitrojet .csv'
-        df=pd.read_excel('./Demo/SELLADORA PEQUEÑA.xlsx')#, sep=';')#,encoding='latin-1',sep=';')#,encoding='ISO-8859-1')
+        df=pd.read_excel(path)#, sep=';')#,encoding='latin-1',sep=';')#,encoding='ISO-8859-1')
         #Falla general equipo
         df=falla_tiempo(df)
 
@@ -282,15 +282,15 @@ else:
         table[i]
 
     #Descarga archivo Global de Equipos
-    st.subheader('Descargar Reporte')
-    import time
-    with st.spinner('Generando reporte en excel...'):
-        time.sleep(5)
-    st.success('Hecho!')
-    writer = ExcelWriter(path+f'Confiabilidad_Global_Equipos_Críticos{date.today()}'+'.xlsx')
-    conf_g.T.to_excel(writer,'Conf_Global_Equipos_Críticos')
-    writer.save()
-    writer = ExcelWriter(path+f'Confiabilidad_Equipos_Críticos_Componente{date.today()}'+'.xlsx')
-    for i in range(len(tables)):
-        tables[i].to_excel(writer,f'{conf_g.T.index[i]}')
-    writer.save()
+    # st.subheader('Descargar Reporte')
+    # import time
+    # with st.spinner('Generando reporte en excel...'):
+    #     time.sleep(5)
+    # st.success('Hecho!')
+    # writer = ExcelWriter(path+f'Confiabilidad_Global_Equipos_Críticos{date.today()}'+'.xlsx')
+    # conf_g.T.to_excel(writer,'Conf_Global_Equipos_Críticos')
+    # writer.save()
+    # writer = ExcelWriter(path+f'Confiabilidad_Equipos_Críticos_Componente{date.today()}'+'.xlsx')
+    # for i in range(len(tables)):
+    #     tables[i].to_excel(writer,f'{conf_g.T.index[i]}')
+    # writer.save()
