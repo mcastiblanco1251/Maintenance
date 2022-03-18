@@ -89,7 +89,7 @@ def confiabilidad(threshold, data, wb):
     threshold=threshold
     realiability=[]
     for hour in hours :
-        sf = wb.distribution.SF(hour)
+        sf = wb.distribution.SF(int(hour))
         if sf<=threshold:
             break
     st.write(f"Horas para que NO falle {hour} horas o {round(hour/24,2)} dias, con una confiabilidad del {round(sf,2)*100}% o probibilidad de falla de {round((1-sf),2)*100}%")
@@ -191,7 +191,7 @@ def weibull_componentes( df, threshold, equi):
         alpha.append(alphac)
         beta.append(betac)
         for hour in hours :
-            sf = wbc.distribution.SF(hour)
+            sf = wbc.distribution.SF(int(hour))
             if sf<=threshold:
                 break
         hours_.append(hour)
