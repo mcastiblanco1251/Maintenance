@@ -89,6 +89,7 @@ def confiabilidad(threshold, data, wb):
     threshold=threshold
     realiability=[]
     for hour in hours :
+        hours[0]
         sf = wb.distribution.SF((hours[0]))
         if sf<=threshold:
             break
