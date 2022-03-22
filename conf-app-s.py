@@ -88,7 +88,7 @@ def confiabilidad(threshold, data, wb):
     #data
     time_to_p=max(data)
     #time_to_p
-    hours=np.array(range(1,time_to_p,10))
+    hours=np.linspace(1,1600,100)#np.array(range(1,time_to_p,10))
     #hours
     threshold=threshold
     realiability=[]
