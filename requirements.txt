@@ -8,6 +8,6 @@ pandas_datareader
 yfinance 
 selenium
 bs4
-reliability
+reliability==0.5.5
 xlrd==1.2.0
 XlsxWriter
