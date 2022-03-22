@@ -84,19 +84,19 @@ def falla_tiempo(df):
 
 #Necesario2
 def confiabilidad(threshold, data, wb):
-    wb
-    data
+    #wb
+    #data
     time_to_p=max(data)
-    time_to_p
+    #time_to_p
     hours=np.array(range(1,time_to_p,10))
-    hours
+    #hours
     threshold=threshold
     realiability=[]
-    sf = wb.distribution.SF(1.0)
-    sf
+    #sf = wb.distribution.SF(hours)
+    #sf
     for hour in hours :
-        hours[0]
-        sf = wb.distribution.SF((hours[0]))
+        
+        sf = wb.distribution.SF((hour))
         if sf<=threshold:
             break
     st.write(f"Horas para que NO falle {hour} horas o {round(hour/24,2)} dias, con una confiabilidad del {round(sf,2)*100}% o probibilidad de falla de {round((1-sf),2)*100}%")
@@ -211,17 +211,26 @@ def weibull_componentes( df, threshold, equi):
     table=pd.DataFrame.from_dict(table)
     return table#.style.set_caption(f'Tabla Resumen Análiis de Confiabilidad {equi}')#print(f'Tabla resumen de {equi}''\n',f'y la siguiente Tabla: {table}','\n')
 
-def files(pa, ext):
+# def files(pa, ext):
+#     extension = ext
+#     os.chdir(pa)
+#     files = glob.glob('*.{}'.format(extension))
+#     return files
+
+def files(ext,folder_path='.'):
     extension = ext
-    os.chdir(pa)
+    os.chdir(folder_path)
     files = glob.glob('*.{}'.format(extension))
-    return files
+    selected_filename = st.sidebar.selectbox('Archivo Demo',files) #glob.glob('*.{}'.format(extension))
+    return os.path.join(folder_path, selected_filename)
+
 
 #with st.form(key='Descargar', clear_on_submit=False):
 st.sidebar.subheader('Datos Entrada')
 #try:
-path='SELLADORA PEQUEÑA.xlsx'#st.sidebar.text_input('Dirección')#'Y:/2016 MANTENIMIENTO/confiabilidad/'
+#path='SELLADORA PEQUEÑA.xlsx'#st.sidebar.text_input('Dirección')#'Y:/2016 MANTENIMIENTO/confiabilidad/'
 ext=st.sidebar.selectbox('Extensión archivo', ('xlsx','csv'))
+path =files(ext)
 tr=st.sidebar.slider('Confiabilidad',0.0,1.0,0.55)
 if path=='':
     st.sidebar.error('Favor introducir la Dirección para hacer el análisis, (*Ver descripción de la app*)')
@@ -229,7 +238,7 @@ else:
 
     #    submit_button = st.form_submit_button(label='Analizar')
     #    if submit_button:
-    files=path
+    files=[path]
 
     st.subheader('Archivos a Analizar')
     #f=pd.DataFrame(files, columns=['Equipos'])
