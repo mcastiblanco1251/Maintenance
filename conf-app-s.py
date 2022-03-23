@@ -96,7 +96,7 @@ def confiabilidad(threshold, data, wb):
     #sf
     for hour in hours :
 
-        sf = wb.distribution.SF((hour))
+        sf = wb.distribution.SF(1)
         if sf<=threshold:
             break
     st.write(f"Horas para que NO falle {hour} horas o {round(hour/24,2)} dias, con una confiabilidad del {round(sf,2)*100}% o probibilidad de falla de {round((1-sf),2)*100}%")
@@ -281,16 +281,16 @@ else:
         #Analisis general de equipo
         data=df['Falla_tiempo'][1:]
         data=np.array(data)*24
-        st.subheader(f"Curvas de Confiabilidad para equipo {equi.split('.')[0]}")
+        st.subheader(f"Curvas de Confiabilidad para equipo {equi.split('.')[1].replace('/','')}")
         wb=weibull_curvas(data, equi)
         alpha_g=wb.results['Point Estimate'][0]
         beta_g=wb.results['Point Estimate'][1]
-        st.subheader(f"Confiabilidad Global del equipo {equi.split('.')[0]}")
+        st.subheader(f"Confiabilidad Global del equipo {equi.split('.')[1]}")
         hour, sf, p= confiabilidad(threshold,data, wb)
         conf_g[file]={'alpha':alpha_g,'beta':beta_g, 'hours':hour, 'days': hour/24, 'reliability':sf, 'fail':p}
 
         #pareto componente
-        st.subheader(f"Pareto de Falla por Componentes del equipo {equi.split('.')[0]}")
+        st.subheader(f"Pareto de Falla por Componentes del equipo {equi.split('.')[1]}")
         pareto_componente(df)
         #Analisis componente
 
