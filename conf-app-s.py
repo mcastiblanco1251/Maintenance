@@ -96,10 +96,10 @@ def confiabilidad(threshold, data, wb):
     #sf = wb.distribution.SF(1)
     alphac=wb.results['Point Estimate'][0]
     betac=wb.results['Point Estimate'][1]
-    alphac
-    betac
-    ef= e**-(1/alphac)**betac
-    ef
+    #alphac
+    #betac
+    #ef= e**-(1/alphac)**betac
+    #ef
     for hour in hours :
 
         sf = e**-(hour/alphac)**betac
