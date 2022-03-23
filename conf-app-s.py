@@ -201,7 +201,7 @@ def weibull_componentes( df, threshold, equi):
     fail=[]
     days=[]
     for componente in componentes:
-        st.subheader(f"Análisis para el {componente} del equipo {equi.split('.')[0]}")
+        st.subheader(f"Análisis para el {componente} del equipo {equi.split('.')[1]}")
         filt=(df[' COMPONENTE ']==componente)
         dfC=df[filt]
 
@@ -224,9 +224,9 @@ def weibull_componentes( df, threshold, equi):
         reliability.append(round(sf,2))
         fail.append(round((1-sf),2))
         days.append(round(hour/24,2))
-        st.subheader(f"Confiabilidad para {componente} del equipo {equi.split('.')[0]}")
+        st.subheader(f"Confiabilidad para {componente} del equipo {equi.split('.')[1]}")
         st.write(f"Horas para que el componente {componente} NO falle {hour} horas o {round(hour/24,2)} dias, con una confiabilidad del {round(sf,2)*100}% o probibilidad de falla de {round((1-sf),2)*100}%", '\n')
-    table={'Equipo':equi.split('.')[0],'componente':componentes,'alpha':alpha,'beta':beta, 'hours':hours_, 'days': days, 'reliability':reliability, 'fail':fail}
+    table={'Equipo':equi.split('.')[1],'componente':componentes,'alpha':alpha,'beta':beta, 'hours':hours_, 'days': days, 'reliability':reliability, 'fail':fail}
     table=pd.DataFrame.from_dict(table)
     return table#.style.set_caption(f'Tabla Resumen Análiis de Confiabilidad {equi}')#print(f'Tabla resumen de {equi}''\n',f'y la siguiente Tabla: {table}','\n')
 
@@ -315,7 +315,22 @@ else:
     for i in range(len(tables)):
         table[i]=pd.DataFrame(tables[i])
         table[i]
-
+    df = pd.DataFrame.from_dict(table[0])
+    #df
+    @st.cache
+    def convert_df(dict):
+        df = pd.DataFrame.from_dict(dict)
+    #
+    #  # IMPORTANT: Cache the conversion to prevent computation on every rerun
+        return df.to_csv().encode('utf-8')
+    csv=convert_df(df)
+    #csv
+    st.download_button(
+     label="Descargar Datos como CSV",
+     data=csv,
+     file_name='Analisis.csv',
+     #mime='text/csv',
+     )
     #Descarga archivo Global de Equipos
     # st.subheader('Descargar Reporte')
     # import time
