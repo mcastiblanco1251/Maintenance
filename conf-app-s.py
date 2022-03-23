@@ -108,19 +108,30 @@ def confiabilidad(threshold, data, wb):
 
 #Necesario3
 def weibull_curvas(data, equi):
+    plt.figure(figsize=(5,5))
+    plt.subplot(1,2,1)
+
     #ar=equi.split('.')[0]
     #st.subheader(f'Curvas de Confiabilidad para equipo {ar}')
     #data = data # made using Weibull Distribution(alpha=50,beta=3)
     wb = Fit_Weibull_2P(failures=data)
+    plt.legend()
+    plt.title('Curva de Ajuste Weibull2P')
     #fig=plt.figure(figsize=(6,5))
-    st.pyplot(plt.show())
+    #st.pyplot(plt.show())
+    plt.subplot(1,2,2)
     wb.distribution.SF(label='Fitted Distribution',color='steelblue')
     plot_points(failures=data,func='SF',label='failure data',color='red',alpha=0.7)
     plt.legend()
+    plt.title('Curva de Confiabilidad')
+    plt.tight_layout()
     st.pyplot(plt.show())
+    plt.subplot(2,1,1)
     wb.distribution.HF(label='Fitted Distribution',color='steelblue')
     plot_points(failures=data,func='HF',label='failure data',color='red',alpha=0.7)
     plt.legend()
+    plt.title('Curva Vida Util')
+    plt.tight_layout()
     st.pyplot(plt.show())
     return wb
 
@@ -129,15 +140,17 @@ def pareto_componente(df):
     comp_fail=df[' COMPONENTE '].value_counts()
     comp_fail
     #comp_fail.plot.bar(y=df[' COMPONENTE '].value_counts())
-    #fig=plt.figure(figsize=(6,5))
+    plt.subplot(1,1,1)
+    fig=plt.figure(figsize=(10,10))
     plt.title('Pareto Componentes')
     plt.bar (comp_fail.index, comp_fail.values)
     plt.xlabel('Componente',fontsize=9)
     plt.xticks(rotation=90)
     plt.ylabel('Numero de veces',fontsize=9)
+    plt.tight_layout()
     st.pyplot(plt.show())
 
-    st.pyplot()
+
     #Necesario5
 def componentes(df):
     a=df.groupby(' COMPONENTE ').count()
