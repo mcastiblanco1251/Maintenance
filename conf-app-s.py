@@ -92,11 +92,11 @@ def confiabilidad(threshold, data, wb):
     #hours
     threshold=threshold
     realiability=[]
-    #sf = wb.distribution.SF(hours)
-    #sf
+    sf = wb.distribution.SF(1)
+    sf
     for hour in hours :
 
-        sf = wb.distribution.SF(1)
+        sf = wb.distribution.SF(hour)
         if sf<=threshold:
             break
     st.write(f"Horas para que NO falle {hour} horas o {round(hour/24,2)} dias, con una confiabilidad del {round(sf,2)*100}% o probibilidad de falla de {round((1-sf),2)*100}%")
