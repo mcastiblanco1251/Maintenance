@@ -15,7 +15,7 @@ from pandas import ExcelWriter
 from datetime import date
 import streamlit as st
 from PIL import Image
-
+from math import e
 
 im = Image.open("mtto2.png")
 
@@ -92,8 +92,14 @@ def confiabilidad(threshold, data, wb):
     #hours
     threshold=threshold
     realiability=[]
-    sf = wb.distribution.SF(1)
-    sf
+
+    #sf = wb.distribution.SF(1)
+    alphac=wb.results['Point Estimate'][0]
+    betac=wb.results['Point Estimate'][1]
+    alphac
+    betac
+    ef= e**-(1/alphac)**betac
+    ef
     for hour in hours :
 
         sf = wb.distribution.SF(hour)
