@@ -68,8 +68,8 @@ with app_des:
 
     Tener en cuenta:
 
-    * **Dirección**: Es donde se encuentra los archivos con la información, esta debe estar de acuerdo a la plantilla
-    para que funcione adecuadamente, si esta en su PC use C:/xxx/xxx/ o su esta en la URL de streamlit use ./Demo; para mayor información contactar [Manuel Castiblanco](http://ia.smartecorganic.com.co/index.php/contact/)
+    * **Equipo a Analizar**: Es donde se encuentra el archivos con la información para realizar el análisis, esta debe estar de acuerdo a la plantilla
+    para que funcione adecuadamente; para mayor información contactar [Manuel Castiblanco](http://ia.smartecorganic.com.co/index.php/contact/)
     * **Extensión**: Hace referencia al tipo de extensión de los archivos para hacer el análisis esta debe estar de acuerdo a la plantilla
     para que funcione adecuadamente, para mayor información contactar [Manuel Castiblanco](http://ia.smartecorganic.com.co/index.php/contact/)
         """)
@@ -122,7 +122,7 @@ def weibull_curvas(data, equi):
     #data = data # made using Weibull Distribution(alpha=50,beta=3)
     wb = Fit_Weibull_2P(failures=data)
     plt.legend()
-    plt.title('Curva de Ajuste Weibull2P')
+    plt.title('Curva de Ajuste Predictiva')
     #fig=plt.figure(figsize=(6,5))
     #st.pyplot(plt.show())
     plt.subplot(1,2,2)
@@ -240,7 +240,7 @@ def files(ext,folder_path='.'):
     extension = ext
     os.chdir(folder_path)
     files = glob.glob('*.{}'.format(extension))
-    selected_filename = st.sidebar.selectbox('Archivo Demo',files) #glob.glob('*.{}'.format(extension))
+    selected_filename = st.sidebar.selectbox('Equipo a Analizar',files) #glob.glob('*.{}'.format(extension))
     return os.path.join(folder_path, selected_filename)
 
 
