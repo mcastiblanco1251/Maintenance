@@ -317,7 +317,7 @@ else:
         table[i]
     df = pd.DataFrame.from_dict(table[0])
     #df
-    @st.cache
+    #@st.cache
     def convert_df(dict):
         df = pd.DataFrame.from_dict(dict)
     #
