@@ -20,7 +20,7 @@ from math import e
 im = Image.open("mtto2.png")
 
 st.set_page_config(page_title='Confiabilidad', layout="wide", page_icon=im)
-st.set_option('deprecation.showPyplotGlobalUse', False)
+#st.set_option('deprecation.showPyplotGlobalUse', False)
 
 row1_1, row1_2 = st.columns((2,3))
 
@@ -114,7 +114,7 @@ def confiabilidad(threshold, data, wb):
 
 #Necesario3
 def weibull_curvas(data, equi):
-    plt.figure(figsize=(5,5))
+    fig=plt.figure(figsize=(5,5))
     plt.subplot(1,2,1)
 
     #ar=equi.split('.')[0]
@@ -138,7 +138,7 @@ def weibull_curvas(data, equi):
     plt.legend()
     plt.title('Curva Vida Util')
     plt.tight_layout()
-    st.pyplot(plt.show())
+    st.pyplot(fig)
     return wb
 
     #Necesario4
@@ -154,7 +154,7 @@ def pareto_componente(df):
     plt.xticks(rotation=90)
     plt.ylabel('Numero de veces',fontsize=9)
     plt.tight_layout()
-    st.pyplot(plt.show())
+    st.pyplot(fig)
 
 
     #Necesario5
