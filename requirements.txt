@@ -11,3 +11,4 @@ bs4
 reliability
 xlrd==1.2.0
 XlsxWriter
+openpyxl
