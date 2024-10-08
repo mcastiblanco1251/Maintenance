@@ -131,7 +131,7 @@ def weibull_curvas(data, equi):
     plt.legend()
     plt.title('Curva de Confiabilidad')
     plt.tight_layout()
-    st.pyplot(plt.show())
+    st.pyplot(fig)
     plt.subplot(2,1,1)
     wb.distribution.HF(label='Fitted Distribution',color='steelblue')
     plot_points(failures=data,func='HF',label='failure data',color='red',alpha=0.7)
